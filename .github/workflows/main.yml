@@ -26,3 +26,5 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           echo test, and deploy your project.
+          cd /usr/wclDemo
+          pwd
