@@ -28,3 +28,4 @@ jobs:
           echo test, and deploy your project.
           cd /usr/wclDemo
           pwd
+          git clone git@github.com:wuchaoliang/learn-egg.js.git
