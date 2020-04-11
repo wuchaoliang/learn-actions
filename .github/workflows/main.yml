@@ -12,17 +12,19 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - name: Install npm dependencies
-      run: npm install
-    - name: Run build task
-      run: npm run build
+    - name: npm install and build
+      run: |
+        npm install
+        npm run build
     - name: List output files
       run: ls -a ./dist/
-    - name: Deploy to Server
-      uses: SamKirkland/FTP-Deploy-Action@3.0.0
-      with:
-        ftp-server: ${{ secrets.REMOTE_HOST }}
-        ftp-username: ${{ secrets.REMOTE_USER }}
-        ftp-password: ${{ secrets.PASSWORD }}
-        local-dir: ./dist/
-        git-ftp-args: --insecure --remote-root /usr/wclDemo/vueDemo # 要部署到服务器的哪个位置（如果是FTP连接的话--insecure不用加）（是SFTP链接的话不需要加？）
+    - name: Deploy
+    uses: garygrossgarten/github-action-scp@release
+    with:
+        local: ./dist/
+        remote: /usr/wclDemo/vueDemo
+        host: ${{ secrets.REMOTE_HOST }}
+        username: ${{ secrets.REMOTE_USER }}
+        password: ${{ secrets.PASSWORD }}
+        concurrency: 20
+        recursive: true
