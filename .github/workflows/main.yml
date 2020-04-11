@@ -24,6 +24,7 @@ jobs:
           local: ./dist/
           remote: /usr/wclDemo/vueDemo
           host: ${{ secrets.REMOTE_HOST }}
+          port: 22
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.PASSWORD }}
           concurrency: 20
