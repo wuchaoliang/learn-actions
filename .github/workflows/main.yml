@@ -19,12 +19,12 @@ jobs:
     - name: List output files
       run: ls -a ./dist/
     - name: Deploy
-    uses: garygrossgarten/github-action-scp@release
-    with:
-        local: ./dist/
-        remote: /usr/wclDemo/vueDemo
-        host: ${{ secrets.REMOTE_HOST }}
-        username: ${{ secrets.REMOTE_USER }}
-        password: ${{ secrets.PASSWORD }}
-        concurrency: 20
-        recursive: true
+      uses: garygrossgarten/github-action-scp@release
+      with:
+          local: ./dist/
+          remote: /usr/wclDemo/vueDemo
+          host: ${{ secrets.REMOTE_HOST }}
+          username: ${{ secrets.REMOTE_USER }}
+          password: ${{ secrets.PASSWORD }}
+          concurrency: 20
+          recursive: true
