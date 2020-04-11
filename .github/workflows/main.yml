@@ -18,6 +18,8 @@ jobs:
         npm run build
     - name: List output files
       run: ls -a ./dist/
+    - name: parent working directory
+      run: pwd
     - name: Deploy
       uses: garygrossgarten/github-action-scp@release
       with:
