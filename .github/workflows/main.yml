@@ -31,3 +31,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           concurrency: 20
           recursive: true
+    - name: parent working directory
+      run: |
+        cd /home/runner/work/learn-actions/learn-actions/dist
+        ls -a
