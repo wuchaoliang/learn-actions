@@ -23,15 +23,11 @@ jobs:
     - name: Deploy
       uses: garygrossgarten/github-action-scp@release
       with:
-          local: /home/runner/work/learn-actions/learn-actions/dist/
-          remote: /usr/wclDemo/vueDemo
+          local: /home/runner/work/learn-actions/learn-actions/dist
+          remote: /usr/wclDemo
           host: ${{ secrets.REMOTE_HOST }}
           port: 22
           username: ${{ secrets.REMOTE_USER }}
           password: ${{ secrets.PASSWORD }}
           concurrency: 20
           recursive: true
-    - name: parent working directory
-      run: |
-        cd /home/runner/work/learn-actions/learn-actions/dist
-        ls -a
