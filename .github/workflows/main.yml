@@ -27,5 +27,5 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         password: ${{ secrets.PASSWORD }}
         port: 22
-        source: "/home/runner/work/learn-actions/learn-actions/dist"
+        source: "./dist"
         target: "/usr/wclDemo"
