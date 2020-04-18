@@ -1,8 +1,6 @@
 import axios from "axios";
-import { VueAxios } from "./axios.js";
 import { Message } from "element-ui";
 const service = axios.create({
-  baseURL: "",
   timeout: 30000
 });
 service.interceptors.request.use(
@@ -24,7 +22,7 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   response => {
-    const res = response.data || response.result;
+    const res = response.data;
     return res;
   },
   error => {
@@ -33,11 +31,30 @@ service.interceptors.response.use(
   }
 );
 
-const installer = {
-  vm: {},
+const VueAxios = {
   install(Vue) {
-    Vue.use(VueAxios, service);
+    if (this.installed) {
+      return;
+    }
+    this.installed = true;
+    if (!service) {
+      console.error("You have to install axios");
+      return;
+    }
+    Vue.axios = service;
+    Object.defineProperties(Vue.prototype, {
+      axios: {
+        get: function get() {
+          return service;
+        }
+      },
+      $http: {
+        get: function get() {
+          return service;
+        }
+      }
+    });
   }
 };
 
-export { installer as VueAxios, service as axios };
+export default VueAxios;

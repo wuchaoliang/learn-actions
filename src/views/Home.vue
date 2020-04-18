@@ -15,7 +15,7 @@ export default {
     HelloWorld
   },
   created() {
-    console.log(this.$http.get("/api/getArticle/1"));
+    this.$http.get("/api/getArticle/1");
   }
 };
 </script>
