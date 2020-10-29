@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <button @click="onError1">sentry1</button>
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
@@ -16,6 +17,11 @@ export default {
   },
   created() {
     this.$http.get("/api/getArticle/1");
+  },
+  methods:{
+    onError1(){
+      console.log(window["aaa"].bbb);
+    }
   }
 };
 </script>
